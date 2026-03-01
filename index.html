@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Yenien Corvalán — Diseñador gráfico autodidacta</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Inter',sans-serif;
+}
+
+body{
+background:black;
+color:white;
+overflow:hidden;
+}
+
+/* SCROLL VERTICAL */
+
+.container{
+height:100vh;
+overflow-y:scroll;
+scroll-snap-type:y mandatory;
+}
+
+.slide{
+height:100vh;
+scroll-snap-align:start;
+position:relative;
+}
+
+/* CARRUSEL HORIZONTAL */
+
+.carousel{
+display:flex;
+height:100%;
+overflow-x:scroll;
+scroll-snap-type:x mandatory;
+}
+
+.carousel img{
+min-width:100%;
+height:100%;
+object-fit:cover;
+scroll-snap-align:center;
+cursor:pointer;
+}
+
+/* DEGRADE */
+
+.overlay{
+position:absolute;
+bottom:0;
+width:100%;
+height:60%;
+background:linear-gradient(
+to top,
+rgba(0,0,0,0.95),
+rgba(0,0,0,0.5),
+transparent
+);
+pointer-events:none;
+}
+
+/* TEXTO */
+
+.content{
+position:absolute;
+bottom:120px;
+left:30px;
+z-index:2;
+}
+
+.logo{
+width:120px;
+margin-bottom:20px;
+}
+
+h1{
+font-size:32px;
+font-weight:800;
+}
+
+/* BOTON WHATSAPP */
+
+.cta{
+position:fixed;
+bottom:20px;
+left:50%;
+transform:translateX(-50%);
+background:#ff4d00;
+padding:16px 28px;
+border-radius:50px;
+font-weight:600;
+z-index:999;
+display:flex;
+gap:15px;
+align-items:center;
+text-decoration:none;
+color:white;
+}
+
+.cta span{
+opacity:0.7;
+}
+
+/* VISOR FULLSCREEN */
+
+.viewer{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:black;
+display:none;
+z-index:9999;
+}
+
+.viewer-carousel{
+display:flex;
+height:100%;
+overflow-x:scroll;
+scroll-snap-type:x mandatory;
+}
+
+.viewer-carousel img{
+min-width:100%;
+height:100%;
+object-fit:contain;
+scroll-snap-align:center;
+}
+
+.close{
+position:absolute;
+top:20px;
+right:25px;
+font-size:30px;
+color:white;
+z-index:10000;
+cursor:pointer;
+}
+
+</style>
+
+</head>
+<body>
+
+
+
+<div class="container">
+
+
+<!-- PORTADA -->
+
+<section class="slide">
+
+<div class="carousel">
+<img src="foto.jpg">
+</div>
+
+<div class="overlay"></div>
+
+<div class="content">
+
+<img src="logo.png" class="logo">
+
+<h1>Yenien Corvalán</h1>
+<p>Diseñador gráfico autodidacta</p>
+
+</div>
+
+</section>
+
+
+
+<!-- PROYECTO 1 -->
+
+<section class="slide">
+
+<div class="carousel">
+
+<img src="proyecto1/1.png" loading="lazy" onclick="openViewer('proyecto1',0)">
+<img src="proyecto1/2.png" loading="lazy" onclick="openViewer('proyecto1',1)">
+<img src="proyecto1/3.png" loading="lazy" onclick="openViewer('proyecto1',2)">
+<img src="proyecto1/4.png" loading="lazy" onclick="openViewer('proyecto1',3)">
+
+</div>
+
+<div class="overlay"></div>
+
+<div class="content">
+<h1>Academia La Parda</h1>
+</div>
+
+</section>
+
+
+
+<!-- PROYECTO 2 -->
+
+<section class="slide">
+
+<div class="carousel">
+
+<img src="proyecto2/1.png" loading="lazy" onclick="openViewer('proyecto2',0)">
+<img src="proyecto2/2.png" loading="lazy" onclick="openViewer('proyecto2',1)">
+<img src="proyecto2/3.png" loading="lazy" onclick="openViewer('proyecto2',2)">
+
+</div>
+
+<div class="overlay"></div>
+
+<div class="content">
+<h1>Wessex Cervecería</h1>
+</div>
+
+</section>
+
+
+
+</div>
+
+
+
+<!-- BOTON -->
+
+<a class="cta"
+href="https://wa.me/5492995814618?text=Hola%20Yen,%20quiero%20iniciar%20un%20proyecto"
+target="_blank">
+
+Iniciar proyecto
+
+<span>@yenysumundo</span>
+
+</a>
+
+
+
+<!-- VISOR FULLSCREEN -->
+
+<div class="viewer" id="viewer">
+
+<div class="close" onclick="closeViewer()">✕</div>
+
+<div class="viewer-carousel" id="viewerCarousel"></div>
+
+</div>
+
+
+
+<script>
+
+/* REGISTRAR PROYECTOS ACA */
+
+const projects = {
+
+proyecto1:[
+"proyecto1/1.png",
+"proyecto1/2.png"
+],
+
+proyecto2:[
+"proyecto2/1.png",
+"proyecto2/2.png"
+]
+
+};
+
+
+
+/* ABRIR VISOR */
+
+function openViewer(project,index){
+
+const viewer=document.getElementById("viewer");
+const carousel=document.getElementById("viewerCarousel");
+
+carousel.innerHTML="";
+
+projects[project].forEach(src=>{
+
+const img=document.createElement("img");
+img.src=src;
+
+carousel.appendChild(img);
+
+});
+
+viewer.style.display="block";
+
+setTimeout(()=>{
+carousel.scrollLeft=window.innerWidth*index;
+},50);
+
+}
+
+
+/* CERRAR VISOR */
+
+function closeViewer(){
+
+document.getElementById("viewer").style.display="none";
+
+}
+
+</script>
+
+
+
+</body>
+</html>
