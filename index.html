@@ -280,18 +280,25 @@ Iniciar proyecto
 
 <script>
 
-/* REGISTRAR PROYECTOS ACA */
+/* REGISTRAR PROYECTOS ACA — TIENEN QUE COINCIDIR CON TUS ARCHIVOS */
 
 const projects = {
 
 proyecto1:[
 "proyecto1/1.png",
-"proyecto1/2.png"
+"proyecto1/2.png",
+"proyecto1/3.png",
+"proyecto1/4.png"
 ],
 
 proyecto2:[
 "proyecto2/1.png",
-"proyecto2/2.png"
+"proyecto2/2.png",
+"proyecto2/3.png"
+],
+
+proyecto3:[
+"proyecto3/1.png"
 ]
 
 };
@@ -310,7 +317,10 @@ carousel.innerHTML="";
 projects[project].forEach(src=>{
 
 const img=document.createElement("img");
+
 img.src=src;
+
+img.loading="eager";
 
 carousel.appendChild(img);
 
@@ -318,11 +328,20 @@ carousel.appendChild(img);
 
 viewer.style.display="block";
 
+
+/* posicionar en la imagen correcta */
+
 setTimeout(()=>{
-carousel.scrollLeft=window.innerWidth*index;
+
+carousel.scrollTo({
+left: window.innerWidth * index,
+behavior: "instant"
+});
+
 },50);
 
 }
+
 
 
 /* CERRAR VISOR */
@@ -340,6 +359,7 @@ document.getElementById("viewer").style.display="none";
 </body>
 
 </html>
+
 
 
 
