@@ -5,7 +5,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title></title>
+<title>Yenien Corvalán — Diseñador gráfico autodidacta</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
 
@@ -22,36 +22,6 @@ body{
 background:black;
 color:white;
 overflow:hidden;
-}
-
-/* LOGO INTRO */
-
-#logoIntro{
-position:fixed;
-top:-300px;
-left:50%;
-transform:translateX(-50%);
-width:240px;
-z-index:1000;
-animation:logoDrop 1.2s ease-out forwards;
-transition:opacity 0.6s ease;
-.logoHide{
-opacity:0;
-pointer-events:none;
-}
-
-@keyframes logoDrop{
-
-0%{
-top:-300px;
-opacity:0;
-}
-
-100%{
-top:110px;
-opacity:1;
-}
-
 }
 
 /* SCROLL VERTICAL */
@@ -185,7 +155,7 @@ cursor:pointer;
 </head>
 <body>
 
-<img id="logoIntro" src="logo.png" alt="yen">
+
 
 <div class="container">
 
@@ -392,35 +362,6 @@ document.getElementById("viewer").style.display="none";
 
 }
 
-function closeViewer(){
-document.getElementById("viewer").style.display="none";
-}
-
-/* INTRO SCROLL */
-
-window.addEventListener("load",()=>{
-
-setTimeout(()=>{
-
-window.scrollTo({
-top:window.innerHeight,
-behavior:"smooth"
-});
-
-},2200);
-
-});
-
-window.addEventListener("scroll",()=>{
-
-const logo = document.getElementById("logoIntro");
-
-if(window.scrollY > 50){
-logo.classList.add("logoHide");
-}
-
-});
-
 </script>
 
 
@@ -428,6 +369,7 @@ logo.classList.add("logoHide");
 </body>
 
 </html>
+
 
 
 
