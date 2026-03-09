@@ -24,6 +24,32 @@ color:white;
 overflow:hidden;
 }
 
+/* LOGO INTRO */
+
+#logoIntro{
+position:fixed;
+top:-300px;
+left:50%;
+transform:translateX(-50%);
+width:240px;
+z-index:1000;
+animation:logoDrop 1.2s ease-out forwards;
+}
+
+@keyframes logoDrop{
+
+0%{
+top:-300px;
+opacity:0;
+}
+
+100%{
+top:110px;
+opacity:1;
+}
+
+}
+
 /* SCROLL VERTICAL */
 
 .container{
@@ -155,7 +181,7 @@ cursor:pointer;
 </head>
 <body>
 
-
+<img id="logoIntro" src="logo.png" alt="yen">
 
 <div class="container">
 
@@ -362,6 +388,25 @@ document.getElementById("viewer").style.display="none";
 
 }
 
+function closeViewer(){
+document.getElementById("viewer").style.display="none";
+}
+
+/* INTRO SCROLL */
+
+window.addEventListener("load",()=>{
+
+setTimeout(()=>{
+
+window.scrollTo({
+top:window.innerHeight,
+behavior:"smooth"
+});
+
+},2200);
+
+});
+
 </script>
 
 
@@ -369,6 +414,7 @@ document.getElementById("viewer").style.display="none";
 </body>
 
 </html>
+
 
 
 
