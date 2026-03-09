@@ -5,7 +5,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Yenien Corvalán — Diseñador gráfico autodidacta</title>
+<title></title>
 
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
 
@@ -34,6 +34,10 @@ transform:translateX(-50%);
 width:240px;
 z-index:1000;
 animation:logoDrop 1.2s ease-out forwards;
+transition:opacity 0.6s ease;
+.logoHide{
+opacity:0;
+pointer-events:none;
 }
 
 @keyframes logoDrop{
@@ -407,6 +411,16 @@ behavior:"smooth"
 
 });
 
+window.addEventListener("scroll",()=>{
+
+const logo = document.getElementById("logoIntro");
+
+if(window.scrollY > 50){
+logo.classList.add("logoHide");
+}
+
+});
+
 </script>
 
 
@@ -414,6 +428,7 @@ behavior:"smooth"
 </body>
 
 </html>
+
 
 
 
